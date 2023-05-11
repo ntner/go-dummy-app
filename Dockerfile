@@ -2,10 +2,10 @@ FROM golang:1.20-alpine
 
 RUN apk update && apk upgrade && apk add --no-cache bash git postgresql
 
-WORKDIR /app
+WORKDIR /go/src/app
 
 COPY . .
 
-RUN go build -o main .
+RUN go install
 
-CMD ["/app/main"]
+CMD ["feed"]
